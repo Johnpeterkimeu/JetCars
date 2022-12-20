@@ -1,0 +1,14 @@
+<form action = " {% url 'login' %} " method = "POST">
+   {% csrf_token %}
+   <div class = "container">
+<h2> login </h2>
+  <hr>
+     <label for = "Email or username"><b>Email or username</b></label>
+<input type = "text" placeholder = "Email" name = "Email or username" required>
+<label for Password = "password" ><b>password</b></label>
+<input type = "text" placeholder = "password" required>
+
+<button type = "submitt" class = "signin"> login</button>
+</div>
+  </div>
+  </form>
