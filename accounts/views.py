@@ -6,11 +6,21 @@ from django.shortcuts import render
 def home (request):
     return render(request,'index.html')
 
+def register(request):
+   if request.get == "POST":
+      username = request.POST.get("username")
+      Email  = request.POST.get("Mombile number or Email")
+      password = request.POST.get("password")
+      repeat = request.POST.get("repeat")
+
+
+   if password == repeat:
+     
 
 def shop (request):
     return render(request, 'shop.html')
 
-def Product(request):
+def product(request):
     return render(request, 'product-details.html')
 
 def checkout(request):
