@@ -1,28 +1,24 @@
 <div class ="signupfm">
-   <form action ="" class = "form">
-   <h1 class="title" > signup </h1>\
-
+   <form action ="{% url 'register' %}" method = "POST" class = "form">
+   {% csrf_token %}
+   <h1 class="title" > signup </h1>
    <div class = " input container" >
-    <input type = "text" class = "input" placeholder = "a">
+    <input type = "text" name = "email" class = "input" placeholder = "email">
     <label for = "" class = "label" > Email </label>
 
    </div>
-
-   <div class= "input container" >
-     <input type = "text" class = "input" placeholder = "a" >
-    <label for = "" class = "label" > username </label>
-  </div>
+ 
   
  <div class= "input container" >
-     <input type = "text" class = "input" placeholder = "a" >
+     <input type = "password" name = "password" class = "input" placeholder = "password" >
     <label for = "" class = "label" > Enter Password </label>
   </div>
      
       <div class= "input container" >
-     <input type = "text" class = "input" placeholder = "a" >
+     <input type = "password" name = "re-enter_password" class = "input" placeholder = "password" >
     <label for = "" class = "label" > confirm Password </label>
   </div>
 
-  <input type = "submitt" class = "submitt" value = "signup" >
+  <button type = "submitt" class = "submitt" value = "signup" >signup</button>
   </form>
   </div>
