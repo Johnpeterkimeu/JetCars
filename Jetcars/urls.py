@@ -28,3 +28,4 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
           
+#SMEDIA_URL, document_root=settings.MEDIA_ROOT)

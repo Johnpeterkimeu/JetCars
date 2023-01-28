@@ -1,11 +1,13 @@
 import email
+import json
+from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from click import password_option
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from httplib2 import Authentication
 from users.models import User
-from accounts.models import Product
+from accounts.models import *
 from django.contrib.auth.models import auth
 # Create your views here.
 
@@ -49,8 +51,8 @@ def login(request):
     
     return render(request,'login.html')
 
-    
-
+def shipping(request):
+    return render(request,'shipping.html')  
 
     
 
@@ -73,8 +75,16 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 def cart(request):
-    return render(request, 'cart.html')
-
+    context={}
+    cart_items=Order_item.objects.all()
+    customer=request.user.customer
+    order,created =Order.objects.get_or_create(customer=customer,complete=False)
+    #cart_total = order.get_cart_total()
+    context['cart_items']=cart_items
+    context['order']=order
+   
+    return render(request, 'cart.html',context)
+    
      
      
     
@@ -91,4 +101,31 @@ def  details(request,id):
     context["product"] = product
 
     return render(request,'product-details.html',context)
+
+def UpdateItem(request):
+    data=json.loads(request.body)
+    productId= data['productId']
+    action   = data['action']
+    print('Action:',action)
+    print('Product:',productId)
+
+    customer=request.user.customer  
+    print("thisis the ====",customer)
+    product=Product.objects.get(id=productId)
+    order,created =Order.objects.get_or_create(customer=customer,complete=False)
+
+    orderItem,created =Order_item.objects.get_or_create(order=order,product=product)
+
+    if action=='add':
+       orderItem.quantity=(orderItem.quantity +1)
+    elif action== 'remove':
+       orderItem.quantity=(orderItem.quantity +1)
+
+    orderItem.save()
+
+
+    if orderItem.quantity <=0:
+        orderItem.delete()
+
+    return JsonResponse('item was added',safe=False)   
 

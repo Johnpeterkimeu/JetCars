@@ -153,6 +153,7 @@
 
                             <!-- Add to Cart Form -->
                             <form class="cart clearfix" method="post">
+                            {%csrf_token%}
                                 <div class="cart-btn d-flex mb-50">
                                     <p>Qty</p>
                                     <div class="quantity">
@@ -161,8 +162,10 @@
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+
                             </form>
+                             <button data-productId="{{ product.id }}" data-action="add" id="qrt"  value="5" class="btn amado-btn update-cart">Add to cart</button>
+
 
                         </div>
                     </div>
@@ -260,7 +263,82 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{%static 'js/plugins.js' %}"></script>
     <!-- Active js -->
     <script src="{%static 'js/active.js' %}"></script>
+     
+    <script>
+         
+    var updateBtns= document.getElementsByClassName('update-cart') 
+    
+   
+    for(var i = 0; i < updateBtns.length; i++){
+        updateBtns[i].addEventListener('click',function(){                              
+      
+                var productId = this.dataset.productid                        
+                var action  = this.dataset.action
+                console.log('productId',productId,'Action',action       )                          
+                var user="{{request.user}}"
+                
+                console.log('USER',user)
+             if(user == 'AnonymousUser'){
+                console.log('user is not authenticated')
+               
+            }else{
+                updatedUserOrder(productId,action)
 
+            }
+                                                               
+        });
+     }
+
+    	function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+	
+    
+
+    function updatedUserOrder(productId,action){
+            console.log('user is authenticated,sending data')
+            var csrftoken = getToken('csrftoken')
+
+             var url='/update_item/'
+
+             fetch(url,{
+                method:'POST',
+                headers:{
+                    
+                    'context-Type':'application/json',
+                    'X-CSRFToken':csrftoken,
+
+                },
+                body: JSON.stringify({'productId':productId,'action':action })
+             
+             })
+             .then((response) =>{
+                return response.json();
+
+             })
+             .then((data)  =>{
+                console.log(data)
+                //loction.reload()
+             });
+             
+                         
+          }
+        
+        
+	
+    </script>
 </body>
 
 </html>
