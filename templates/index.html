@@ -54,7 +54,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="index.html"><img src="{%static 'img/core-img/logo.png' %}" alt=""></a>
+                <a href="/"><img src="{%static 'img/core-img/logo.png' %}" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -100,7 +100,7 @@
 </div> {% endcomment %}
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="{%static 'img/core-img/cart.png'%}" alt=""> Cart <span>(0)</span></a>
+                <a href="/cart" class="cart-nav"><img src="{%static 'img/core-img/cart.png'%}" alt=""> Cart <span>(0)</span></a>
                 <a href="#" class="fav-nav"><img src="{%static'img/core-img/favorites.png'% }" alt=""> Favourite</a>
                 <a href="#" class="search-nav"><img src="{%static 'img/core-img/search.png' %}" alt=""> Search</a>
             </div>
@@ -189,12 +189,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     <div class="single_widget_area">
                         <!-- Footer Menu -->
                         <div class="footer_menu">
-                            <nav class="navbar navbar-expand-lg justify-content-end">
+                            {% comment %} <nav class="navbar navbar-expand-lg justify-content-end">
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                            <a class="nav-link" href="{% url 'index' %}">Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="shop.html">Shop</a>
@@ -202,15 +202,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                         <li class="nav-item">
                                             <a class="nav-link" href="product-details.html">Product</a>
                                         </li>
-                                        <li class="nav-item">
+                                         <li class="nav-item">
                                             <a class="nav-link" href="cart.html">Cart</a>
-                                        </li>
+                                        </li> 
                                         <li class="nav-item">
                                             <a class="nav-link" href="checkout.html">Checkout</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </nav>
+                            </nav> {% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -232,4 +232,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </body>
 
-</html>
+</html> 

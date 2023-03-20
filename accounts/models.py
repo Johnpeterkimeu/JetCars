@@ -54,4 +54,12 @@ class Order_item(models.Model):
         total = self.quantity*self.product.Price
         return total
 
-      
+class Checkout(models.Model):
+    customer = models.ForeignKey(Customer,null= True,on_delete=models.SET_NULL)
+    Firstname= models.CharField(max_length=45)
+    Lastname= models.CharField(max_length=45)
+    Adress= models.CharField(max_length=45)
+    Phoneno= models.CharField(max_length=12)
+    order = models.ForeignKey("Order",null= True,on_delete=models.SET_NULL)   
+    
+    AmountPaid=models.DecimalField(max_digits=5, decimal_places= 3)

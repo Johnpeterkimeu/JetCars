@@ -1,5 +1,11 @@
 import email
 import json
+ 
+
+
+from sre_constants import CATEGORY, CATEGORY_DIGIT
+from sre_parse import CATEGORIES
+from unicodedata import category
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from click import password_option
@@ -54,7 +60,35 @@ def login(request):
 def shipping(request):
     return render(request,'shipping.html')  
 
+def save_data(request):
+   
+    #cart_total = order.get_cart_total()
+  
+   
+    if request.method =='POST':
+        Firstname=request.POST.get('Firstname')
+        Lastname=request.POST.get('Lastname')
+        payment=request.POST.get('AmountPaid')
+      
+        Checkout.objects.create( Firstname= Firstname, Lastname= Lastname,AmountPaid = payment)
     
+    return redirect('/')
+    
+          
+    
+
+
+# def singleproduct(request, id):
+#   context= {
+#     'types': CATEGORY.objects.all(),
+#     'products': Product.objects.filter(productid= id),
+#     'incart':False,
+#   }
+
+#   if request.user.is_authenticated:
+#      order = Order.objects.get_or_create(Customer=request.user.customer, _Complete=False)[0],
+#      context['in_cart']= order.Orderitm_set.filter(product_productid = id).exists()
+#      return render(request,'cart.html',context)
 
 
 
@@ -72,7 +106,13 @@ def product(request):
 
 
 def checkout(request):
-    return render(request, 'checkout.html')
+    context={}
+
+    customer=request.user.customer  
+    order,created =Order.objects.get_or_create(customer=customer,complete=False)
+    context['order']=order
+    return render(request, 'checkout.html',context)
+    
 
 def cart(request):
     context={}
@@ -94,6 +134,29 @@ def order(request):
         lastname = request.post['lastname']
         Email = request.post['Email']
 
+    if request.user_is_authenticated:
+        Customer.request.user.customer
+        order, created=Order.objects.get_or_create(customer=Customer, complete=False)
+        items=order.orderitem_set_all()
+        cartItems=Order.get_cart_items
+        types=CATEGORY.objects.all()
+        prods= Product.objects.filter(productid=id)
+
+        in_cart  = Order.orderitem_setfilter(product__productid=id).exists()
+
+
+
+    else:
+
+       types = category.objects.all()
+       prods=product.objects.filter(productid=id)
+
+       cartItems=[]
+
+       in_cart = False
+
+
+       return render(request,'cart.html',{'types':types,'prods':prods, 'in_cart':in_cart})
 
 def  details(request,id):    
     product = Product.objects.get(id=id)
