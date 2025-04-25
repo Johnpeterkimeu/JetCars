@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<html>
+    <head>
+        <title>Login</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+                background-image: linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef), linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef);
+                background-position: 0 0, 10px 10px;
+                background-size: 20px 20px;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: blue;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h2>Login</h2>
+                
+                    
+                    
+                <label for="email">Email</label><br>
+                <input type="text" id="email" name="email" required><br><br>
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+            </form>
+        </div>
+        {% comment %} <form method="POST" action="{% url 'login' %}">
+            <h1>Login</h1>
+            {% csrf_token %}
+            <label for="username">username</label><br>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Login">
+       
+        <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+        {% comment %} <p>Forgot your password? <a href="{% url 'reset_password' %}">Reset it here</a></p> {% endcomment %}  
+ 
+    </html>

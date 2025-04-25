@@ -1,0 +1,26 @@
+import requests
+headers = {
+  'Accept': '*/*',
+  'X-Country': 'UG',
+  'X-Currency': 'UGX',
+  'Authorization': 'Bearer UCc*****ki2w'
+}
+r = requests.get('https://openapiuat.airtel.africa/standard/v1/cashin/{id}', headers = headers)
+print(r.json())
+
+
+{
+    "data": {
+        "transaction": {
+            "airtel_money_id": "product-partner-ABCD1234",
+            "id": "ABCD1234",
+            "status": "TS"
+        }
+    },
+    "status": {
+        "code": "200",
+        "message": "Success",
+        "result_code": "DP01000001001",
+        "success": false
+    }
+}

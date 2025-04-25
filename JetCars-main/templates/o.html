@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+   <meta charset = "UTF-8">
+   <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+   <title>login</title>
+   <style>
+      body{
+         background-color: #f0f0f0;
+         font-family: Arial, sans-serif;
+         background-image:linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef), linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef);
+         background-position:0 0,10px 10px;
+         background-size: 20px 20px;
+      }
+
+      .container{
+         display:flex;
+         flex-direction:column;
+         justify-content:center;
+         align-items:center;
+         height:100vh;
+         background-color:blue;
+         border-radius: 10px;
+      }
+   </style>
+
+</head>
+<div class="container">
+<form action = " {% url 'login' %} " method = "POST">
+   {% csrf_token %}
+   
+<h2> Login </h2>
+
+     <label for = "email"><b> email</b></label>
+<input type = "text" placeholder = "email" name = "email" required>
+<label for Password = "password" ><b>password</b></label>
+<input type = "password" placeholder = "password" name="password" required>
+
+<button type = "submit" class = "signin"> login</button>
+
+<p>
+   don't have an account , please   <a href="/register">register</a>
+</p>
+</div>
+  </div>
+</div>
+  </form> 
+  </html>

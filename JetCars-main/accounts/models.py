@@ -1,0 +1,91 @@
+from django.db import models
+from django.core.validators import validate_email, RegexValidator
+from django.forms import forms
+from users.models import User
+
+import uuid
+
+
+#  Create your models here.
+class Register(models.Model):
+     email = models.EmailField(unique=True, validators=[validate_email])
+     password = models.CharField(max_length=45)
+     confirm = models.CharField(max_length=45)
+
+     def __str__(self):
+         return self.first_name
+class Product(models.Model):
+    Product_name = models.CharField(max_length=30)
+    Price = models.IntegerField ()
+    Rating = models.CharField(max_length=5)
+    Review = models.CharField(max_length= 200)
+    photo = models.ImageField(upload_to = 'pics')
+    
+ 
+
+
+
+class Customer(models.Model):
+       user = models.OneToOneField(User,on_delete=models.CASCADE)
+       name = models.CharField(max_length= 80)
+     
+    
+
+       def __str__(self):
+        return self.user.email
+   
+class Order(models.Model):
+    customer = models.ForeignKey(Customer,null= True,on_delete=models.SET_NULL)
+    date_orderd = models.DateTimeField(auto_now=True)
+    transaction_id = models.IntegerField(null=True)
+    complete= models.BooleanField(null=True)
+
+    @property
+    def get_cart_total(self):
+        orderitems = self.order_item_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
+
+    @property
+    def get_cart_items(self):
+        orderitems = self.order_item_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total    
+    
+    
+
+  
+
+
+class Order_item(models.Model):
+    product= models.ForeignKey("Product",null=True,on_delete=models.SET_NULL)
+    order = models.ForeignKey("Order",null= True,on_delete=models.SET_NULL)
+    quantity = models.IntegerField(default=0)
+    date_added = models.DateTimeField(auto_now=True)
+
+    @property
+    def get_total(self):        
+        total = self.quantity*self.product.Price
+        return total
+
+class Checkout(models.Model):
+    customer = models.ForeignKey(Customer,null= True,on_delete=models.SET_NULL)
+    Firstname= models.CharField(max_length=45)
+    Lastname= models.CharField(max_length=45)
+    Adress= models.CharField(max_length=45)
+    Phoneno= models.CharField(max_length=12, validators=[ RegexValidator(regex=r'^\+?1?\d{9,15}$')])
+    order = models.ForeignKey("Order",null= True,on_delete=models.SET_NULL)   
+   
+class Transaction(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    transaction_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.transaction_id)
+    
+class PaymentForm(models.Model):
+    phone_number = models.CharField(max_length=15)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)

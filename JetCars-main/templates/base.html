@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            body {
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+                background-image: linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef), linear-gradient(45deg, #efefef 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, #efefef 75%, #efefef);
+                background-position: 0 0, 10px 10px;
+                background-size: 20px 20px;
+            }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+            li {
+                float: left;
+            }
+            li a {
+                display: flex;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            li a:hover {
+                background-color: #111;
+            }
+
+            .icon{
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                display: flex;
+                justify-content: space-around;
+                padding: 10px 0;
+            }
+
+            .icon a {
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            .icon a:hover {
+                background-color: #111;
+            }
+            .icon a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+            .icon i {
+                font-size: 24px;
+            }
+            .icon a:hover i {
+                color: #4CAF50;
+            }
+            .icon a.active i {
+                color: white;
+            }
+            .icon a i {
+                transition: color 0.3s;
+            }
+            .icon a:hover i {
+                color: #4CAF50;
+            }
+            .icon a.active i {
+                color: white;
+            }
+            .icon a i {
+                transition: color 0.3s;
+            }
+            .icon a:hover i {
+                color: #4CAF50;
+            }
+            .icon a.active i {
+                color: white;
+            }
+            .icon a i {
+                transition: color 0.3s;
+            }
+            .icon a:hover i {
+                color: #4CAF50;
+            }
+        </style>
+    </head>
+<body>
+    <ul>
+         <li><a href="{% url 'index' %}">Home</a></li>
+         {% comment %} <li><a href="{% url 'shop' %}">Shop</a></li> {% endcomment %}
+            <li><a href="{% url 'product' %}">Product</a></li>
+            <li><a href="{% url 'cart' %}">Cart</a></li>
+            <li><a href="{% url 'checkout' %}">Checkout</a></li>
+    </ul>
+        
+
+    <div class="icon">
+        <a class="active" href="#"><i class="fa fa-home"></i></a>
+        <a href="#"><i class="fa fa-search"></i></a>
+        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+        <a href="#"><i class="fa fa-user"></i></a>
+        <a href="#"><i class="fa fa-cog"></i></a>
+    </div>
+</body>
