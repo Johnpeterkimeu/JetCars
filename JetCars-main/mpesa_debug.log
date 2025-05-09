@@ -1,0 +1,51 @@
+2025-04-30 15:02:09,248 - accounts.views - DEBUG - Action: add
+2025-04-30 15:02:09,249 - accounts.views - DEBUG - Product: 7
+2025-04-30 15:02:09,629 - accounts.views - DEBUG - User: eed@gmail.com
+2025-04-30 15:02:09,633 - accounts.views - DEBUG - Customer: eed@gmail.com
+2025-04-30 15:02:13,574 - accounts.views - DEBUG - Customer: eed@gmail.com
+2025-04-30 15:02:23,468 - accounts.views - INFO - Payment view accessed
+2025-04-30 15:02:23,468 - accounts.views - DEBUG - Rendering payment form (GET request)
+2025-04-30 15:03:13,135 - accounts.views - INFO - Payment view accessed
+2025-04-30 15:03:13,136 - accounts.views - DEBUG - Rendering payment form (GET request)
+2025-04-30 15:03:20,897 - accounts.views - INFO - M-Pesa payment view accessed
+2025-04-30 15:03:20,897 - accounts.views - DEBUG - Formatting phone number: 0113329091
+2025-04-30 15:03:20,898 - accounts.views - DEBUG - Reformatted phone: 0113329091 to 254113329091
+2025-04-30 15:03:20,898 - accounts.views - INFO - Processing payment for phone: 254113329091, amount: 1
+2025-04-30 15:03:20,899 - accounts.views - INFO - Initiating STK push for phone: 254113329091, amount: 1
+2025-04-30 15:03:20,899 - accounts.views - DEBUG - Generating access token
+2025-04-30 15:03:22,161 - accounts.views - DEBUG - Access token response: {
+            "access_token": "KTlHGOVcWuWESfvCBWAo6WLR5yhq",
+            "expires_in": "3599"
+        }
+        
+2025-04-30 15:03:22,179 - accounts.views - DEBUG - STK push request: {"BusinessShortCode": "174379", "Password": "MTc0Mzc5TVRjME16YzVZbVppTWpjNVpqbGhZVGxpWkdKalpqRTFPR1U1TjJSa056RmhORFkzWTJReVpUQmpPRGt6TURVNVlqRXdaamM0WlRaaU56SmhaR0V4WldReVl6a3hPVEl3TVRZd01qRTJNVFkxTmpJMzIwMjUwNDMwMTUwMzIy", "Timestamp": "20250430150322", "TransactionType": "CustomerPayBillOnline", "Amount": "1", "PartyA": "254113329091", "PartyB": "174379", "PhoneNumber": "254113329091", "CallBackURL": "https://729d-41-89-227-171.ngrok-free.app/mpesa_callback", "AccountReference": "Test", "TransactionDesc": "Test"}
+2025-04-30 15:03:22,180 - accounts.views - DEBUG - Using callback URL: https://729d-41-89-227-171.ngrok-free.app/mpesa_callback
+2025-04-30 15:03:23,082 - accounts.views - DEBUG - STK push response: {
+                    "requestId":"bebb-4211-b89c-968f03613eaa127928",
+                    "errorCode": "500.001.1001",
+                    "errorMessage": "Wrong credentials"
+                }
+            
+2025-04-30 15:03:23,094 - accounts.views - DEBUG - STK push response: {'requestId': 'bebb-4211-b89c-968f03613eaa127928', 'errorCode': '500.001.1001', 'errorMessage': 'Wrong credentials'}
+2025-04-30 15:03:23,094 - accounts.views - ERROR - STK push failed: Wrong credentials
+2025-04-30 15:03:47,237 - accounts.views - INFO - M-Pesa payment view accessed
+2025-04-30 15:03:47,237 - accounts.views - DEBUG - Formatting phone number: 0113329091
+2025-04-30 15:03:47,237 - accounts.views - DEBUG - Reformatted phone: 0113329091 to 254113329091
+2025-04-30 15:03:47,238 - accounts.views - INFO - Processing payment for phone: 254113329091, amount: 1
+2025-04-30 15:03:47,238 - accounts.views - INFO - Initiating STK push for phone: 254113329091, amount: 1
+2025-04-30 15:03:47,238 - accounts.views - DEBUG - Generating access token
+2025-04-30 15:03:48,063 - accounts.views - DEBUG - Access token response: {
+            "access_token": "dUdK9dTXOeBfcbgMQEZ8PV6PO1mA",
+            "expires_in": "3599"
+        }
+        
+2025-04-30 15:03:48,069 - accounts.views - DEBUG - STK push request: {"BusinessShortCode": "174379", "Password": "MTc0Mzc5TVRjME16YzVZbVppTWpjNVpqbGhZVGxpWkdKalpqRTFPR1U1TjJSa056RmhORFkzWTJReVpUQmpPRGt6TURVNVlqRXdaamM0WlRaaU56SmhaR0V4WldReVl6a3hPVEl3TVRZd01qRTJNVFkxTmpJMzIwMjUwNDMwMTUwMzQ4", "Timestamp": "20250430150348", "TransactionType": "CustomerPayBillOnline", "Amount": "1", "PartyA": "254113329091", "PartyB": "174379", "PhoneNumber": "254113329091", "CallBackURL": "https://729d-41-89-227-171.ngrok-free.app/mpesa_callback", "AccountReference": "Test", "TransactionDesc": "Test"}
+2025-04-30 15:03:48,069 - accounts.views - DEBUG - Using callback URL: https://729d-41-89-227-171.ngrok-free.app/mpesa_callback
+2025-04-30 15:03:49,498 - accounts.views - DEBUG - STK push response: {
+                    "requestId":"74cc-45b4-9c87-cf63848fd86567408",
+                    "errorCode": "500.001.1001",
+                    "errorMessage": "Wrong credentials"
+                }
+            
+2025-04-30 15:03:49,512 - accounts.views - DEBUG - STK push response: {'requestId': '74cc-45b4-9c87-cf63848fd86567408', 'errorCode': '500.001.1001', 'errorMessage': 'Wrong credentials'}
+2025-04-30 15:03:49,512 - accounts.views - ERROR - STK push failed: Wrong credentials

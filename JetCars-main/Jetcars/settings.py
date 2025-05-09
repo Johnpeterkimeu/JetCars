@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'django_daraja'
+   
+     
 
 ]
 

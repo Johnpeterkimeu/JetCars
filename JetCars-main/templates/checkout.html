@@ -182,7 +182,12 @@
                             </div>
 
                             <div class="cart-btn mt-100">
-                                <button type="submit"  class="btn amado-btn w-100" onclick="">Checkout</button>                           </div>
+                                <button type="button"  class="btn amado-btn w-100">
+                                    <a href="{% url 'payment_view' %}" class="btn amado-btn w-100">Checkout</a>
+                                    {% comment %} <a href="{% url 'mpesa_payment_view' %}" class="btn amado-btn w-100">Pay with Mpesa</a> {% endcomment %}
+                                </button> 
+                                        
+                                </div>
                         </div>
                     </div>
                 </div>
